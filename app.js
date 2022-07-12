@@ -22,5 +22,5 @@ const header = React.createElement(
 
 ReactDOM.render(
     header,
-    document.querySelector("#root")
+    document.getElementById('root')
 );
