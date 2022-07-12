@@ -1,24 +1,16 @@
-const title = React.createElement(
-    // type , attribute, content
-    'h1',
-    {id: 'main-title', title: 'insert-here'},
-    'My First React Element!'    
-);
+const title = 'My React Element!';
+const desc = 'I created a paragraph using React.';
+const myTitleID = 'main-title';
+const name = 'Lucas';
 
-// <h1 id="main-title" title="insert-here">My First React Element!</h1>
-
-const desc = React.createElement(
-    'p',
-    null,
-    'I just created a paragraph using react'
+const header = (
+    <header>
+        <h1 id={myTitleID}>{name}'s First React Element</h1>
+        <p> { desc } </p>
+    </header>
 );
-
-const header = React.createElement(
-    'header',
-    null,
-    title,
-    desc
-);
+//Write 2 or more lines of JSX in parenthesis for readability.
+// { } in JSX are called a JSX expression
 
 ReactDOM.render(
     header,
