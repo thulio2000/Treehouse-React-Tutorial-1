@@ -24,5 +24,3 @@ ReactDOM.render(
     header,
     document.querySelector("#root")
 );
-
-console.log(title);
