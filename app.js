@@ -1,46 +1,73 @@
-const Header = () => {
+const players = [
+    {
+        name: "Luke",
+        score: 3
+    },
+    {
+        name: "Alfredo",
+        score: 60
+    },
+    {
+        name: "Bilbo",
+        score: 50
+    },
+    {
+        name: "Gohan",
+        score: 27
+    }
+];
+
+const Header = (props) => {
     return (
         <header>
-            <h1>Scoreboard</h1>
-            <span className="stats" >Players: 1</span>
+            <h1>{ props.title }</h1>
+            <span className="stats" >Players: { props.totalPlayers }</span>
         </header>
     );
 }
 
-const Player = () => {
+const Player = (props) => {
     return (
         <div className="player">
             <span className="player-name">
-                Lucas
+                { props.name }
             </span>            
-            <Counter />
+            <Counter score={props.score} />
         </div>       
     );
 }
 
-const Counter = () => {
+const Counter = (props) => {
     return (
         <div className="counter">
             <button className="counter-action decrement"> - </button>
-            <span className="counter-score">27</span>
+            <span className="counter-score">{ props.score }</span>
             <button className="counter-action increment"> + </button>
         </div>
     )
 }
 
-const App = () => {
+const App = (props) => {
     return (
         <div className="scoreboard">
-            <Header />
+            <Header 
+              title="Scoreboard" 
+              totalPlayers={props.initialPlayers.length}
+            />
 
             {/*Players List*/}
-            <Player />
+            {props.initialPlayers.map( player =>
+                <Player                    
+                  name={props.name} 
+                  score={props.score}                    
+                />
+            )}
         </div>
     );
 }
 
 ReactDOM.render(
-    <App />,
+    <App initialPlayers={players} />,
     document.getElementById('root')
 );
 
@@ -56,4 +83,11 @@ ReactDOM.render(
 /*
 day #03 -
 Remember to use className instead of class, just like "getElementByClassName()"
+day #04 -
+React, at the core, is a library for creating and updating HTML elements
+Properties are like html attributes, that give more meaning to the components. Most of the UI uses props
+Defined in a component's JSX tags
+Props === immutable
+Like pure functions, they always return the same result for the same input
+Notice how each component has one functionality
 */
