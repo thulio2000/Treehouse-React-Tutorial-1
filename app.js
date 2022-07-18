@@ -1,19 +1,23 @@
 const players = [
     {
         name: "Luke",
-        score: 3
+        score: 3,
+        id: 1
     },
     {
         name: "Alfredo",
-        score: 60
+        score: 60,
+        id: 2
     },
     {
         name: "Bilbo",
-        score: 50
+        score: 50,
+        id: 3
     },
     {
         name: "Gohan",
-        score: 27
+        score: 27,
+        id: 4
     }
 ];
 
@@ -59,7 +63,8 @@ const App = (props) => {
             {props.initialPlayers.map( player =>
                 <Player                    
                   name={props.name} 
-                  score={props.score}                    
+                  score={props.score}  
+                  key={player.id.toString()}                  
                 />
             )}
         </div>
@@ -90,4 +95,7 @@ Defined in a component's JSX tags
 Props === immutable
 Like pure functions, they always return the same result for the same input
 Notice how each component has one functionality
+day #05 -
+Keys, a built-in React prop indentifier to keep track of items that change(like our player list). Like html ID's, keys are unique and
+not reusable.
 */
