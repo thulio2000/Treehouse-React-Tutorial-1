@@ -98,4 +98,6 @@ Notice how each component has one functionality
 day #05 -
 Keys, a built-in React prop indentifier to keep track of items that change(like our player list). Like html ID's, keys are unique and
 not reusable.
+day #06 - 
+First treehouse react practice,
 */
