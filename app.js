@@ -41,14 +41,16 @@ const Player = (props) => {
     );
 }
 
-const Counter = (props) => {
-    return (
-        <div className="counter">
-            <button className="counter-action decrement"> - </button>
-            <span className="counter-score">{ props.score }</span>
-            <button className="counter-action increment"> + </button>
-        </div>
-    )
+class Counter extends React.component {
+    render() {
+        return (
+            <div className="counter">
+                <button className="counter-action decrement"> - </button>
+                <span className="counter-score">{ this.props.score }</span>
+                <button className="counter-action increment"> + </button>
+            </div>
+        );
+    }    
 }
 
 const App = (props) => {
@@ -99,5 +101,15 @@ day #05 -
 Keys, a built-in React prop indentifier to keep track of items that change(like our player list). Like html ID's, keys are unique and
 not reusable.
 day #06 - 
-First treehouse react practice,
+First treehouse react practice, rendering planet cards, with diameter, description and an image of the 
+planet. Tricky part was loading the img, aside from that I could render it all
+day #07 - I was just getting confused between img tags and the URL property, so it was basically a matter
+of syntax and nothing else.
+The alt text was used just the name of the planet. It's easy but I still don't know how to place inside
+quotes, like:
+"Planet {props.name}" --> Planet Earth.
+
+Props are read-only, immutable
+State - dynamic, interactive. UI in sync with data
+Class components for state
 */
