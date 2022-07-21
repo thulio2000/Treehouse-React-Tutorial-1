@@ -42,17 +42,22 @@ const Player = (props) => {
 }
 
 class Counter extends React.component {
-
     state = {
         score: 0
     };
+
+    incrementScore() {
+        this.setState({
+            score: this.state.score + 1
+        });
+    }
 
     render() {
         return (
             <div className="counter">
                 <button className="counter-action decrement"> - </button>
                 <span className="counter-score">{ this.state.score }</span>
-                <button className="counter-action increment"> + </button>
+                <button className="counter-action increment" onClick={this.incrementScore.bind(this)}> + </button>
             </div>
         );
     }    
@@ -116,4 +121,7 @@ quotes, like:
 Props are read-only, immutable
 State - dynamic, interactive. UI in sync with data
 Class components for state
+Day #08 -
+Using state to handle events
+Bind the methods, if they are inside class it's no longer auto bound to the react component
 */
