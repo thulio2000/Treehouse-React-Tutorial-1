@@ -1,26 +1,3 @@
-const players = [
-    {
-        name: "Luke",
-        score: 3,
-        id: 1
-    },
-    {
-        name: "Alfredo",
-        score: 60,
-        id: 2
-    },
-    {
-        name: "Bilbo",
-        score: 50,
-        id: 3
-    },
-    {
-        name: "Gohan",
-        score: 27,
-        id: 4
-    }
-];
-
 const Header = (props) => {
     return (
         <header>
@@ -34,6 +11,7 @@ const Player = (props) => {
     return (
         <div className="player">
             <span className="player-name">
+                <button className="remove-player" onClick={ () => props.removePlayer(props.id) }>✖</button>
                 { props.name }
             </span>            
             <Counter />
@@ -47,15 +25,16 @@ class Counter extends React.Component {
     };
 
     incrementScore = () => {
-        this.setState({
-            score: this.state.score + 1
-        });
+        this.setState( prevState => ({
+            score: prevState.score + 1
+            
+        }));
     }
 
     decrementScore = () => {
-        this.setState ({
-            score: this.state.score - 1
-        });
+        this.setState ( prevState => ({            
+            score: prevState.score - 1            
+        }));
     }
 
     render() {
@@ -69,27 +48,62 @@ class Counter extends React.Component {
     }    
 }
 
-const App = (props) => {
-    return (
-        <div className="scoreboard">
-            <Header 
-              title="Scoreboard" 
-              totalPlayers={props.initialPlayers.length}
-            />
+class App extends React.Component {
+    
+    setState = {
+        players: [
+            {
+                name: "Luke",                
+                id: 1
+            },
+            {
+                name: "Alfredo",                
+                id: 2
+            },
+            {
+                name: "Bilbo",                
+                id: 3
+            },
+            {
+                name: "Gohan",             
+                id: 4
+            }
+        ]
+    }
 
-            {/*Players List*/}
-            {props.initialPlayers.map( player =>
-                <Player                    
-                  name={player.name}                  
-                  key={player.id.toString()}                  
+    handleRemovePlayer = (id) => {
+        this.setState( prevState => {
+            return {
+                players: prevState.players.filter( p => p.id !== id )
+            };            
+        });
+    }
+    
+    render() {
+        return (
+            <div className="scoreboard">
+                <Header 
+                  title="Scoreboard" 
+                  totalPlayers={this.state.players.length}
                 />
-            )}
-        </div>
-    );
+    
+                {/*Players List*/}
+                {this.state.players.map( player =>
+                    <Player                    
+                      name={player.name}
+                      id={player.id}
+                      key={player.id.toString()}
+                      removePlayer={this.handleRemovePlayer}
+                    />
+                )}
+            </div>
+        );
+    }
+    
 }
 
 ReactDOM.render(
-    <App initialPlayers={players} />,
+    <App />,
     document.getElementById('root')
 );
 
@@ -130,4 +144,5 @@ Class components for state
 Day #08 -
 Using state to handle events
 Bind the methods, if they are inside class it's no longer auto bound to the react component
+Application State (main, entire app data) and Component State (specific to a component and not shared outside of it)
 */
