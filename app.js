@@ -41,7 +41,7 @@ const Player = (props) => {
     );
 }
 
-class Counter extends React.component {
+class Counter extends React.Component {
     state = {
         score: 0
     };
