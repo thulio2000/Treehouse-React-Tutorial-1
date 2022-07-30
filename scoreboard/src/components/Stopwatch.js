@@ -45,7 +45,7 @@ class Stopwatch extends Component {
         return (
             <div className="stopwatch">
                 <h2>Stopwatch</h2>
-                <span class="stopwatch-time">
+                <span className="stopwatch-time">
                     { seconds }
                 </span>
                 <button onClick={this.handleStopwatch}>
